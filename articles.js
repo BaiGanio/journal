@@ -1,7 +1,7 @@
 const articles = [
   {
     "id": "001",
-    "slug": "the-stoic-and-the-machine.html",
+    "slug": "pages/the-stoic-and-the-machine.html",
     "title": "The Stoic and the Machine",
     "subtitle": "What ancient philosophy teaches us about living with AI",
     "topic": "Philosophy",
