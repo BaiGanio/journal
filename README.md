@@ -1,6 +1,7 @@
-# articles Project Structure
+# Shadows within the Cave
 
-```
+### Project Structure
+```txt
 articles/                           ← GitHub repository root
 │
 ├── index.html                      ← Landing page (auto-loads articles.json)
