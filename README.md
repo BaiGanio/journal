@@ -2,7 +2,7 @@
 
 ### Project Structure
 ```txt
-articles/                           ← GitHub repository root
+journal/                           ← GitHub repository root
 │
 ├── index.html                      ← Landing page (auto-loads articles.json)
 ├── articles.json                   ← Master list of all published articles
