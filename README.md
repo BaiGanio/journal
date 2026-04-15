@@ -2,23 +2,18 @@
 
 ### Project Structure
 ```txt
-journal/                           ← GitHub repository root
+📂 journal/                         ← GitHub repository root
 │
-├── index.html                      ← Landing page (auto-loads articles.json)
-├── articles.json                   ← Master list of all published articles
+├── 📄 index.html                   ← Landing page (auto-loads articles.json)
+├── 📄 articles.json                ← Master list of all published articles
 │
-├── pages/
-│   ├── TEMPLATE.html               ← Copy this for every new essay
-│   ├── the-stoic-and-the-machine.html
-│   ├── light-from-dead-stars.html
-│   └── cities-we-never-built.html
+├── 📂 pages/
+│   ├── 📂 assets/
+│   └── 📄 TEMPLATE.html            ← Copy this for every new essay
 │
-├── assets/
-│   ├── images/
-│   │   ├── stoic-machine.jpg
-│   │   ├── dead-stars.jpg
-│   │   └── cities-never-built.jpg
-│   └── favicon.ico                 ← Optional
+├── 📂 assets/
+│   ├── 📂 images/                  ← Master list used by the published articles
+│   └── 📄 favicon.ico              ← Optional
 │
 └── README.md                       ← Optional project notes
 ```

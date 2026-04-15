@@ -1,6 +1,19 @@
 const articles = [
-  {
+   {
     "id": "001",
+    "slug": "pages/the-ai-fairy-tale.html",
+    "title": "The AI fairy tail",
+    "subtitle": "On shadows, simulations, and who controls the projector",
+    "topic": "Philosophy",
+    "topicColor": "philosophy",
+    "date": "2026-06-19",
+    "image": "assets/images/cave/cave.png",
+    "excerpt": "....",
+    "readTime": 10,
+    "featured": true
+  },
+  {
+    "id": "010",
     "slug": "pages/the-stoic-and-the-machine.html",
     "title": "The Stoic and the Machine",
     "subtitle": "What ancient philosophy teaches us about living with AI",
@@ -13,7 +26,7 @@ const articles = [
     "featured": false
   },
   {
-    "id": "002",
+    "id": "020",
     "slug": "articles/light-from-dead-stars.html",
     "title": "Light from Dead Stars",
     "subtitle": "On nostalgia, memory, and the physics of looking back",
@@ -27,7 +40,7 @@ const articles = [
     "featured": false
   },
   {
-    "id": "003",
+    "id": "030",
     "slug": "articles/cities-we-never-built.html",
     "title": "Cities We Never Built",
     "subtitle": "The utopian urbanism of science fiction and what it reveals about us",
