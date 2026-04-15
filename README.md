@@ -7,7 +7,7 @@ journal/                           ← GitHub repository root
 ├── index.html                      ← Landing page (auto-loads articles.json)
 ├── articles.json                   ← Master list of all published articles
 │
-├── articles/
+├── pages/
 │   ├── TEMPLATE.html               ← Copy this for every new essay
 │   ├── the-stoic-and-the-machine.html
 │   ├── light-from-dead-stars.html
