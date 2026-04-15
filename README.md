@@ -1,4 +1,4 @@
-# Shadows within the Cave
+# 👻 Shadows within the Cave 🏛️
 
 ### Project Structure
 ```txt
