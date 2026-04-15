@@ -7,7 +7,7 @@
   <!-- ═══════════════════════════════════════════════
        ARTICLE META — edit every 'content' in this block
   ═══════════════════════════════════════════════ -->
-  <title>ARTICLE_TITLE — The Cave Story</title>
+  <title>ARTICLE_TITLE</title>
   <meta name="description"        content="ARTICLE_EXCERPT" />
   <meta property="og:title"       content="ARTICLE_TITLE" />
   <meta property="og:description" content="ARTICLE_EXCERPT" />
@@ -28,19 +28,15 @@
       <a href="../index.html" class="nav-back">← All essays</a>
     </div>
   </nav>
-
+  
   <!-- Article header -->
   <div class="container">
     <header class="article-header">
       <div class="row">
         <div class="col-lg-10 col-xl-8">
-          <p class="article-topic">ARTICLE_TOPIC</p>
+          <p class="article-topic">ARTICLE_TOPIC | <span>ARTICLE_DATE</span> | <span id="reading-time-id"></span></p>
           <h1 class="article-title">ARTICLE_TITLE</h1>
           <p class="article-subtitle">ARTICLE_SUBTITLE</p>
-          <p class="article-meta">
-            <span>ARTICLE_DATE</span>
-            <span>ARTICLE_READTIME min read</span>
-          </p>
         </div>
       </div>
     </header>
@@ -77,7 +73,7 @@
   <!-- Hero carousel -->
 
   <!-- Article body -->
-  <article class="article-body">
+  <article id="article-id" class="article-body">
 
     <!-- ═══════════════════════════════════════
          WRITE YOUR ARTICLE CONTENT BELOW

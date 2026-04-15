@@ -1,6 +1,6 @@
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-(function () {
+document.addEventListener('DOMContentLoaded', function() {
   const captions = [
     'ARTICLE_IMAGE_CAPTION_1',
     'ARTICLE_IMAGE_CAPTION_2',
@@ -12,7 +12,9 @@ document.getElementById('footer-year').textContent = new Date().getFullYear();
   const caption  = document.getElementById('heroCaption');
   let current = 0, animating = false, timer;
 
-  // Set all images waiting to the right initially
+  // Guard clause
+  if (!imgs.length || !dotsWrap) { return; }
+
   imgs.forEach((img, i) => {
     if (i !== 0) img.classList.add('from-right');
   });
@@ -70,11 +72,27 @@ document.getElementById('footer-year').textContent = new Date().getFullYear();
 
   function resetTimer() {
     clearInterval(timer);
-    timer = setInterval(() => go(current + 1), 7000);
+    timer = setInterval(() => go(current + 1), 10000);
   }
 
   document.querySelector('.carousel-btn.prev').addEventListener('click', () => go(current - 1));
   document.querySelector('.carousel-btn.next').addEventListener('click', () => go(current + 1));
 
   resetTimer();
-})();
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. Find the article (Change 'article' to your specific tag or class)
+    const article = document.getElementById('article-id');
+    const timeSpan = document.getElementById('reading-time-id');
+    if (article) {
+        // 2. Strip tags and count words
+        const text = article.innerText;
+        const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+        
+        // 3. Calculate minutes (Average 238 WPM)
+        const minutes = Math.ceil(words / 238);
+
+        timeSpan.innerHTML = `${minutes} min read | (${words} words)`;
+    }
+});

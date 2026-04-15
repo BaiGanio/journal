@@ -18,7 +18,7 @@ function renderFeatured(a) {
     <div class="featured-img-wrap">${imgOrPlaceholder(a.image, a.imageAlt)}</div>
     <div class="d-flex align-items-center gap-2 mt-3">
         <span class="topic-badge ${topicClass(a.topic)}">${a.topic}</span>
-        <span class="read-time">${a.readTime} min read</span>
+        <span class="read-time">${a.readTime}</span>
     </div>
     <h2 class="featured-title"><a href="${a.slug}">${a.title}</a></h2>
     <p class="featured-subtitle">${a.subtitle}</p>
@@ -35,7 +35,7 @@ function cardHTML(a) {
         <p class="card-topic ${topicClass(a.topic)}">${a.topic}</p>
         <p class="card-title">${a.title}</p>
         <p class="card-excerpt">${a.excerpt}</p>
-        <p class="card-meta">${fmt(a.date)} &ensp;·&ensp; ${a.readTime} min read</p>
+        <p class="card-meta">${fmt(a.date)} &ensp;·&ensp; ${a.readTime}</p>
         </div>
         <div class="card-img">${imgOrPlaceholder(a.image, a.imageAlt)}</div>
     </a>`;
