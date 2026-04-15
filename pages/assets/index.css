@@ -58,3 +58,63 @@ body::before {
 .back-link:hover { color: var(--rust); border-color: var(--rust); }
 footer { border-top: 1px solid var(--rule); padding: 2rem 0; text-align: center; }
 footer p { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0; }
+/* Carousel — keep .hero-image-wrap styles intact */
+.carousel { position: relative; width: 100%; height: 100%; }
+
+.carousel { position: relative; width: 100%; height: 100%; overflow: hidden; }
+
+.carousel-track { position: relative; width: 100%; height: 100%; }
+
+.carousel-track img {
+  position: absolute; inset: 0;
+  width: 110%; height: 100%; object-fit: cover;
+  filter: sepia(15%) contrast(1.05);
+  opacity: 0;
+  transform: translateX(0%);
+  transition: opacity 1.2s ease-in-out, transform 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, opacity;
+}
+
+/* Resting state: next image waits off to the right, slightly */
+.carousel-track img.from-right {
+  transform: translateX(8%);
+}
+.carousel-track img.from-left {
+  transform: translateX(-8%);
+}
+
+/* Active image is fully visible, centered */
+.carousel-track img.active {
+  opacity: 1;
+  transform: translateX(-5%); /* slight leftward drift while displayed */
+}
+
+/* Outgoing image slides away slowly at half speed */
+.carousel-track img.leaving-left {
+  opacity: 0;
+  transform: translateX(-12%);
+}
+.carousel-track img.leaving-right {
+  opacity: 0;
+  transform: translateX(12%);
+}
+
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.35); border: none; color: #fff;
+  font-size: 2rem; line-height: 1; padding: 0.25rem 0.6rem;
+  cursor: pointer; transition: background 0.2s; z-index: 2;
+}
+.carousel-btn:hover { background: rgba(0,0,0,0.6); }
+.carousel-btn.prev { left: 0.75rem; }
+.carousel-btn.next { right: 0.75rem; }
+
+.carousel-dots {
+  position: absolute; bottom: 0.75rem; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 6px;
+}
+.carousel-dots span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(255,255,255,0.45); cursor: pointer; transition: background 0.2s;
+}
+.carousel-dots span.active { background: #fff; }
