@@ -8,11 +8,9 @@ const articles = [
     "topicColor": "philosophy",
     "date": "2025-12-15",
     "image": "assets/images/the-stoic-and-the-machine/Zeno-of-Citium.jpg",
-    "more": "Last Words of the Emperor Marcus Aurelius by Eugene Delacroix",
-    "imageAlt": "A marble bust next to circuit board patterns",
     "excerpt": "Marcus Aurelius never checked a notification in his life. He ruled an empire, fought on distant frontiers, and still began his mornings by writing quiet notes to himself — reminders on how to stay sane in an insane world.",
     "readTime": 8,
-    "featured": true
+    "featured": false
   },
   {
     "id": "002",
