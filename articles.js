@@ -1,17 +1,17 @@
 const articles = [
-  //  {
-  //   "id": "001",
-  //   "slug": "pages/ai-fairy-tale-one.html",
-  //   "title": "AI fairy tail #1",
-  //   "subtitle": "Shadows, simulations, false prophets, and who controls the projector",
-  //   "topic": "Philosophy",
-  //   "topicColor": "philosophy",
-  //   "date": "2026-06-19",
-  //   "image": "assets/images/cave/cave.png",
-  //   "excerpt": "Somewhere around 380 BC, Plato sat down and described a group of prisoners chained inside a cave, facing a wall. Behind them, a fire burns. Between the fire and the prisoners, puppeteers carry objects — and the prisoners watch only the shadows those objects cast.",
-  //   "readTime": 10,
-  //   "featured": true
-  // },
+   {
+    "id": "001",
+    "slug": "pages/ai-fairy-tale-one.html",
+    "title": "AI fairy tail #1",
+    "subtitle": "Shadows, simulations, false prophets, and who controls the projector",
+    "topic": "Philosophy",
+    "topicColor": "philosophy",
+    "date": "2026-06-19",
+    "image": "assets/images/cave/cave.png",
+    "excerpt": "Somewhere around 380 BC, Plato sat down and described a group of prisoners chained inside a cave, facing a wall. Behind them, a fire burns. Between the fire and the prisoners, puppeteers carry objects — and the prisoners watch only the shadows those objects cast.",
+    "readTime": 10,
+    "featured": false
+  },
   {
     "id": "010",
     "slug": "pages/the-stoic-and-the-machine.html",
