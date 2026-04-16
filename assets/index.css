@@ -144,7 +144,7 @@ body::before {
 .featured-img-wrap {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 16/9;
+    /* aspect-ratio: 16/9; */
     background: var(--paper-dark);
 }
 .featured-img-wrap img {
