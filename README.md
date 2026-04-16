@@ -87,10 +87,10 @@ Open `articles.json` and **prepend** a new object to the array (newest first):
 
 | topic | topicColor |
 |---|---|
+| `"History"` | `"history"` |
 | `"Philosophy"` | `"philosophy"` |
 | `"Science"` | `"science"` |
 | `"Science Fiction"` | `"scifi"` |
-| `"History"` | `"history"` |
 
 Add a new row to both tables if you introduce a new topic, and add a matching `.topic-pill` filter button in `index.html`.
 
