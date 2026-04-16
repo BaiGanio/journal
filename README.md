@@ -9,13 +9,17 @@
 │
 ├── 📂 pages/
 │   ├── 📂 assets/
+│   │   ├── 📄 index.css            ← Specific essay style
+│   │   └── 📄 index.js             ← Specific essay functions
 │   └── 📄 TEMPLATE.html            ← Copy this for every new essay
 │
 ├── 📂 assets/
 │   ├── 📂 images/                  ← Master list used by the published articles
-│   └── 📄 favicon.ico              ← Optional
+│   ├── 📄 favicon.ico              
+│   ├── 📄 index.css                ← Common landing page and the essay styles
+│   └── 📄 index.js                 ← Specific landing page functions
 │
-└── README.md                       ← Optional project notes
+└── README.md                       ← Project notes
 ```
 
 ---
