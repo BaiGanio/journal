@@ -4,10 +4,10 @@
 ```txt
 📂 journal/                         ← GitHub repository root
 ├── 📂 assets/
-│   ├── 📂 images/                  ← Master list used by the published articles
+│   ├── 📂 images/                  ← Master list used by the essays
 │   ├── 📄 favicon.ico              
-│   ├── 📄 index.css                ← Common landing page and the essay styles
-│   ├── 📄 index.js                 ← Specific landing page functions
+│   ├── 📄 index.css                ← Common landing page and essay styles
+│   ├── 📄 index.js                 ← Common landing page and essay functions
 │   └── 📂 translations/            ← Translations for landing page grouped by id
 ├── 📂 pages/
 │   ├── 📂 assets/
@@ -21,9 +21,8 @@
 │   │   ├── 📄 essay2.html
 │   │   └── 📂 translations/        ← en/bg/de/fr...
 │   └── 📄 TEMPLATE.html            ← Copy this for every new essay
-├── 📄 index.html                   ← Landing page (auto-loads articles.json)
-├── 📄 articles.json                ← Master list of all published articles
-└── README.md                       ← Project notes
+├── 📄 articles.json                ← Master list of all published articles for landing page
+└── 📄 index.html                   ← Landing page (auto-loads articles.json)
 ```
 
 ---
