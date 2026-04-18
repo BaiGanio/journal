@@ -7,7 +7,8 @@
 │   ├── 📂 images/                  ← Master list used by the published articles
 │   ├── 📄 favicon.ico              
 │   ├── 📄 index.css                ← Common landing page and the essay styles
-│   └── 📄 index.js                 ← Specific landing page functions
+│   ├── 📄 index.js                 ← Specific landing page functions
+│   └── 📂 translations/            ← Translations for landing page grouped by id
 ├── 📂 pages/
 │   ├── 📂 assets/
 │   │   ├── 📄 i18-loader.js        ← Language support
