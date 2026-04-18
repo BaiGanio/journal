@@ -1,7 +1,7 @@
 const articles = [
    {
     "id": "001",
-    "slug": "pages/ai-fairy-tale-one.html",
+    "slug": "pages/philosophy/ai-fairy-tale-one.html",
     "title": "AI fairy tail #1",
     "subtitle": "Shadows, simulations, false prophets, and who controls the projector",
     "topic": "Philosophy",
@@ -14,7 +14,7 @@ const articles = [
   },
   {
     "id": "010",
-    "slug": "pages/the-stoic-and-the-machine.html",
+    "slug": "pages/philosophy/the-stoic-and-the-machine.html",
     "title": "The Stoic and the Machine",
     "subtitle": "What ancient philosophy teaches us about living with AI",
     "topic": "Philosophy",
@@ -41,7 +41,7 @@ const articles = [
   // },
   {
     "id": "030",
-    "slug": "pages/cities-we-never-built.html",
+    "slug": "pages/philosophy/cities-we-never-built.html",
     "title": "Cities We Never Built",
     "subtitle": "The utopian urbanism of science fiction and what it reveals about us",
     "topic": "Science Fiction",

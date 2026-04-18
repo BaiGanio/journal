@@ -1,0 +1,65 @@
+{
+  "_language": "English",
+  "_language_native": "English",
+  "_lang_code": "en",
+
+  "ARTICLE_TOPIC":   "Philosophy",
+  "ARTICLE_DATE":    "April 2025",
+  "ARTICLE_TITLE":   "The Cave and the Screen",
+  "ARTICLE_SUBTITLE":"What Plato's allegory tells us about algorithmic reality",
+  "ARTICLE_EXCERPT": "Plato imagined prisoners chained to shadows. We chose ours.",
+
+  "ARTICLE_IMAGE":          "images/cave-hero.jpg",
+  "ARTICLE_IMAGE_ALT":      "A dark cave with light streaming through the entrance",
+  "ARTICLE_IMAGE_CAPTION":  "The entrance we rarely look for. Photo: Jane Doe.",
+
+  "ARTICLE_IMAGE_1":         "images/cave-1.jpg",
+  "ARTICLE_IMAGE_ALT_1":     "Shadow on a cave wall",
+  "ARTICLE_IMAGE_2":         "images/cave-2.jpg",
+  "ARTICLE_IMAGE_ALT_2":     "Chains in stone",
+  "ARTICLE_IMAGE_3":         "images/cave-3.jpg",
+  "ARTICLE_IMAGE_ALT_3":     "Light beyond the cave",
+  "ARTICLE_IMAGE_CAPTION_1": "Shadows we accept as reality. Photo: Jane Doe.",
+
+  "ARTICLE_BODY": [
+    {
+      "type": "p",
+      "text": "Plato's prisoners have never been more relatable. Chained since birth, they watch shadows dance on a stone wall and call it the world. We laugh — then open our feeds."
+    },
+    {
+      "type": "p",
+      "text": "The algorithm is not malicious. It is merely a very efficient shadow-puppet master, optimised for the one metric that keeps us chained: attention."
+    },
+    {
+      "type": "h2",
+      "text": "The Shape of the Cave"
+    },
+    {
+      "type": "p",
+      "text": "Plato was careful to note that the prisoners do not know they are prisoners. The cave is all they have ever known, so it is, by definition, reality."
+    },
+    {
+      "type": "blockquote",
+      "text": "They see only their own shadows, or the shadows of one another, which the fire throws on the opposite wall of the cave. — Plato, The Republic"
+    },
+    {
+      "type": "p",
+      "text": "Substitute 'fire' with 'server farm' and the metaphor holds with uncomfortable precision."
+    },
+    {
+      "type": "hr"
+    },
+    {
+      "type": "h2",
+      "text": "The Exit Nobody Takes"
+    },
+    {
+      "type": "p",
+      "text": "Plato's freed prisoner stumbles into the sunlight, blinded and disoriented. He does not immediately celebrate his liberation — he wants to go back. The cave was comfortable."
+    },
+    {
+      "type": "p",
+      "text": "Perhaps the question is not how to destroy the algorithm, but how to learn to look sideways — to notice the mechanism casting the shadows, even while watching them."
+    }
+  ]
+}
