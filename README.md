@@ -15,8 +15,9 @@
 │   │   ├── 📄 index.css            ← Specific essay style
 │   │   └── 📄 index.js             ← Specific essay functions
 │   ├── 📂 history/
-│   ├── 📂 philosophy/
 │   │   ├── 📄 essay1.html
+│   │   └── 📂 translations/        ← en/bg/de/fr...
+│   ├── 📂 philosophy/
 │   │   ├── 📄 essay2.html
 │   │   └── 📂 translations/        ← en/bg/de/fr...
 │   └── 📄 TEMPLATE.html            ← Copy this for every new essay
