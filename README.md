@@ -3,22 +3,24 @@
 ### Project Structure
 ```txt
 📂 journal/                         ← GitHub repository root
-│
-├── 📄 index.html                   ← Landing page (auto-loads articles.json)
-├── 📄 articles.json                ← Master list of all published articles
-│
-├── 📂 pages/
-│   ├── 📂 assets/
-│   │   ├── 📄 index.css            ← Specific essay style
-│   │   └── 📄 index.js             ← Specific essay functions
-│   └── 📄 TEMPLATE.html            ← Copy this for every new essay
-│
 ├── 📂 assets/
 │   ├── 📂 images/                  ← Master list used by the published articles
 │   ├── 📄 favicon.ico              
 │   ├── 📄 index.css                ← Common landing page and the essay styles
 │   └── 📄 index.js                 ← Specific landing page functions
-│
+├── 📂 pages/
+│   ├── 📂 assets/
+│   │   ├── 📄 i18-loader.js        ← Language support
+│   │   ├── 📄 index.css            ← Specific essay style
+│   │   └── 📄 index.js             ← Specific essay functions
+│   ├── 📂 history/
+│   ├── 📂 philosophy/
+│   │   ├── 📄 essay1.html
+│   │   ├── 📄 essay2.html
+│   │   └── 📂 translations/        ← en/bg/de/fr...
+│   └── 📄 TEMPLATE.html            ← Copy this for every new essay
+├── 📄 index.html                   ← Landing page (auto-loads articles.json)
+├── 📄 articles.json                ← Master list of all published articles
 └── README.md                       ← Project notes
 ```
 
