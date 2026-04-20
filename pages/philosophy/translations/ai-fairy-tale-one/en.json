@@ -1,0 +1,89 @@
+{
+  "_language": "English",
+  "_language_native": "English",
+  "_lang_code": "en",
+
+  "ARTICLE_TOPIC":   "Philosophy",
+  "ARTICLE_DATE":    "April 2025",
+  "ARTICLE_TITLE":   "Shadows within the Cave",
+  "ARTICLE_SUBTITLE":"Shadows, simulations, false prophets, and who controls the projector",
+  "ARTICLE_EXCERPT": "Plato imagined prisoners chained to shadows. We chose ours.",
+
+  "ARTICLE_IMAGE":          "../assets/images/cave/allegory-cave.jpg",
+  "ARTICLE_IMAGE_ALT":      "A dark cave with light streaming through the entrance",
+  "ARTICLE_IMAGE_CAPTION":  "The entrance we rarely look for. Photo: Jane Doe.",
+
+  "ARTICLE_IMAGE_1":         "images/cave-1.jpg",
+  "ARTICLE_IMAGE_ALT_1":     "Shadow on a cave wall",
+  "ARTICLE_IMAGE_2":         "images/cave-2.jpg",
+  "ARTICLE_IMAGE_ALT_2":     "Chains in stone",
+  "ARTICLE_IMAGE_3":         "images/cave-3.jpg",
+  "ARTICLE_IMAGE_ALT_3":     "Light beyond the cave",
+  "ARTICLE_IMAGE_CAPTION_1": "Shadows we accept as reality. Photo: Jane Doe.",
+
+  "ARTICLE_BODY": [
+    {
+      "type": "p",
+      "text": "Somewhere around 380 BC, Plato sat down and described a group of prisoners chained inside a cave, facing a wall. Behind them, a fire burns. Between the fire and the prisoners, puppeteers carry objects — and the prisoners watch only the shadows those objects cast.<br>- <b>They</b> name the shadows.<br>- <b>They</b> argue about the shadows.<br>- <b>They</b> build entire governments around the shadows."
+    },
+    {
+      "type": "p",
+      "text": "<b>They have never once turned around.</b>"
+    },
+    {
+      "type": "p",
+      "text": "What Plato could not have imagined — and honestly, I do not blame him for this — is that two and a half millennia later, we are going to solve this problem not by simply give up and turning around... But by building a <b>better shadows projector</b> and charging a monthly subscription for it. He-he ;/"
+    },
+    {
+      "type":"h2",
+      "text": "The World of Ideas, Now Hosted on AWS, GCP, Azure... whatever"
+    },
+    {
+      "type": "p",
+      "text": "Plato's deeper argument was not just about the cave. It was about what is real. Behind the physical world — behind the shadows, behind the stones and trees and faces — he believed there existed a higher realm: the <b>World of Forms</b>. Perfect, eternal, unchanging archetypes. The perfect Circle. The perfect Justice. The perfect Horse. Every real dog and cat and human being you have ever seen is just a blurry, temporary copy."
+    },
+    {
+      "type": "p",
+      "text": "<b>You can laugh. But bare with me.</b>"
+    },
+    {
+      "type": "p",
+      "text": "Because here is what modern physics quietly whispers back to Plato across the millennia: you might not be entirely wrong, old man."
+    },
+    {
+      "type": "p",
+      "text": "Quantum mechanics tells us that at the base of reality, particles do not have definite properties until they are observed. Before the measurement, an electron exists in superposition — all possible states simultaneously, described by a probability wave. The moment you look, it collapses into one. The act of observation — of paying attention — participates in constructing reality"
+    },
+    {
+      "type": "p",
+      "text": "Which is either profound or deeply unsettling, depending on how much coffee you have had."
+    },
+    {
+      "type": "blockquote",
+      "text": "The universe is not only queerer than we suppose, but queerer than we can suppose. - J.B.S. Haldane"
+    },
+    {
+      "type": "p",
+      "text": "HERE IS THE LAST ONE"
+    },
+    {
+      "type": "p",
+      "text": "Substitute 'fire' with 'server farm' and the metaphor holds with uncomfortable precision."
+    },
+    {
+      "type": "hr"
+    },
+    {
+      "type": "h2",
+      "text": "The Exit Nobody Takes"
+    },
+    {
+      "type": "p",
+      "text": "Plato's freed prisoner stumbles into the sunlight, blinded and disoriented. He does not immediately celebrate his liberation — he wants to go back. The cave was comfortable."
+    },
+    {
+      "type": "p",
+      "text": "Perhaps the question is not how to destroy the algorithm, but how to learn to look sideways — to notice the mechanism casting the shadows, even while watching them."
+    }
+  ]
+}
