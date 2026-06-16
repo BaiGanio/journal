@@ -1,126 +1,91 @@
-# How to Add a Translation
+# How to Add an Essay
 
-Thank you for contributing to *Shadows within the Cave*! Adding a translation takes about 20 minutes and requires **no coding knowledge** — just a text editor.
+Thank you for contributing to *Shadows within the Cave*! Adding an essay takes a
+few minutes of setup plus the time to write. **You don't edit `articles.js` by
+hand** — a small script scaffolds everything for you.
 
----
-
-## File structure
-
-Every article lives in its own folder and has a `translations/` subfolder:
-
-```
-my-article/
-├── index.html          ← the article page (don't edit this)
-├── translations/
-│   ├── en.json         ← English source (always present, your reference)
-│   ├── bg.json         ← Bulgarian
-│   └── de.json         ← your new translation goes here
-└── assets/
-```
+You need [Node.js](https://nodejs.org) installed. Check with `node -v`.
 
 ---
 
-## Step-by-step
+## 1. Scaffold the essay
 
-### 1. Copy the English file
+From the project root, run:
 
-```
-translations/en.json  →  translations/XX.json
-```
-
-Replace `XX` with the [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) for your language:
-
-| Language   | Code | Language   | Code |
-|------------|------|------------|------|
-| Bulgarian  | `bg` | German     | `de` |
-| French     | `fr` | Spanish    | `es` |
-| Italian    | `it` | Polish     | `pl` |
-| Dutch      | `nl` | Romanian   | `ro` |
-| Greek      | `el` | Swedish    | `sv` |
-| Czech      | `cs` | Hungarian  | `hu` |
-
-### 2. Edit your new file
-
-Open it in any text editor. Fill in the translated values. **Only translate the values (right side), never the keys (left side).**
-
-```json
-{
-  "_language": "German",
-  "_language_native": "Deutsch",
-  "_lang_code": "de",
-
-  "ARTICLE_TOPIC": "Philosophie",    ← translate this
-  "ARTICLE_TITLE": "Die Höhle und der Bildschirm",
-  ...
-}
+```bash
+node scripts/new-essay.js
 ```
 
-Keys that start with `_` are metadata — fill them in but they don't need translation.
+It asks a few questions (title, subtitle, topic, excerpt, hero image, date).
+Press **Enter** to accept the `[default]` shown for any of them. When it finishes
+it has created:
 
-**Image paths** (`ARTICLE_IMAGE`, `ARTICLE_IMAGE_1`, etc.) — **do not translate**, leave them identical to the English file unless your version has different photos.
-
-### 3. Translate the body
-
-The `ARTICLE_BODY` array contains the article text as structured blocks:
-
-```json
-"ARTICLE_BODY": [
-  { "type": "p",          "text": "Translate this paragraph." },
-  { "type": "h2",         "text": "Translate this heading." },
-  { "type": "blockquote", "text": "Translate this quote." },
-  { "type": "hr" }        ← no text, leave as-is
-]
+```
+pages/<slug>.html              ← your new essay page
+assets/images/<slug>/          ← put your image(s) here
 ```
 
-Translate every `"text"` value. The `"type"` values (`p`, `h2`, `blockquote`, `hr`) **must not change**.
+…and added the essay to the landing-page feed (`assets/articles.js`) for you.
 
-### 4. Activate your language
-
-Open the article's `index.html` in a text editor and find the `AVAILABLE_LANGS` array near the bottom. Uncomment (or add) your language:
-
-```javascript
-const AVAILABLE_LANGS = [
-  { code: 'en', label: 'English',  englishLabel: 'English'  },
-  { code: 'bg', label: 'Български', englishLabel: 'Bulgarian' },
-  { code: 'de', label: 'Deutsch',  englishLabel: 'German'   }, // ← add this line
-];
-```
-
-### 5. Test it
-
-Open the article in a browser. Click the language selector (top right). Your language should appear and switch the full article.
+The **slug** is the URL-friendly name derived from your title
+(e.g. *"Cities We Never Built"* → `cities-we-never-built`). The script won't
+overwrite an essay that already exists.
 
 ---
 
-## Tips
+## 2. Add your hero image
 
-- Use the English file as your source of truth, not another translation.
-- Keep punctuation and quotation marks consistent with your language's conventions.
-- If a proper noun (name, place, title) has a widely accepted translation in your language, use it. Otherwise leave it in the original language.
-- For blockquotes that cite a classical work (e.g. Plato), use the established published translation in your language if one exists.
+Drop your image into the folder the script created, using the filename you gave
+it (default `hero.jpg`):
+
+```
+assets/images/<slug>/hero.jpg
+```
 
 ---
 
-```txt
-/* <!-- ── i18n loader ──────────────────────────────────────────────────
-      HOW IT WORKS
-      ─────────────
-      1. Put translation files like in the below example:
-             translations/ai-fairy-tale-one/en.json   ← always required (source of truth)
-             translations/ai-fairy-tale-one/bg.json
-             translations/ai-fairy-tale-one/de.json   … etc.
+## 3. Write the essay
 
-      2. List every available language in AVAILABLE_LANGS below.
-         (Only languages with a real .json file should be listed.)
+Open `pages/<slug>.html` and write your content inside the
+`<article id="article-id">` block. Replace the placeholder paragraphs. Available
+elements:
 
-      3. The loader picks the user's browser language automatically,
-         falls back to "en", and lets the reader switch at any time.
-         The choice is remembered in localStorage.
+| Element        | Use for                                   |
+|----------------|-------------------------------------------|
+| `<p>`          | paragraph (the first one gets a drop-cap) |
+| `<h2>`         | section heading                           |
+| `<h3>`         | minor heading (monospaced, uppercase)     |
+| `<blockquote>` | pull quote                                |
+| `<hr>`         | section divider                           |
 
-      4. To add a new language: drop in the .json, add one line here.
- ──────────────────────────────────────────────────────────────────── --> */
- ```
+The title, subtitle, topic, date, and hero image were filled in for you from
+your answers — you normally don't need to touch the `<head>` or header.
+
+### Want a multi-image carousel instead of one hero?
+
+The scaffold ships with a single hero image. To use a swipeable carousel, copy
+the `<figure class="hero-image-wrap">` carousel block from an existing essay
+(`pages/cities-we-never-built.html` or `pages/ai-fairy-tale-one.html`) and
+replace the single-image `<figure>` with it.
+
+---
+
+## 4. Check it
+
+Open `index.html` in a browser, find your new card in the feed, and click
+through to the essay. Confirm the image loads and the text reads correctly.
+
+---
+
+## Notes
+
+- **Essays are hand-written static HTML.** There is no build step and no CMS —
+  what you write is what ships. Keep the markup simple.
+- **One source of truth for the feed:** `assets/articles.js`. Let the script
+  write to it; editing it by hand is what used to cause broken links.
+- **Read time / word count** in the meta line is a free-text label — update it
+  yourself once the essay is written (e.g. `(6 MIN READ) | (1400 WORDS)`).
 
 ## Questions?
 
-Open an issue or send a message to the project maintainer. Thank you! 🌍
+Open an issue or message the maintainer. Thank you! 🌍

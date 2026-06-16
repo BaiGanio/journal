@@ -14,12 +14,9 @@ const imgOrPlaceholder = (src, alt) => src
     ? `<img src="${src}" alt="${alt || ''}" style="object-fit:contain" loading="lazy" />`
     : `<div class="img-placeholder"><span>Image</span></div>`;
 
-/* ── Issue label ── */
-function getCurrentIssueLabel() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth() + 1;
-
+/* ── Issue helpers ── */
+// Given a year + month (1-12), return { num, seasonIdx, year } for the issue.
+function issueInfo(year, month) {
     let seasonIdx;
     if (month >= 3 && month <= 5)       seasonIdx = 1; // Spring
     else if (month >= 6 && month <= 8)  seasonIdx = 2; // Summer
@@ -27,9 +24,36 @@ function getCurrentIssueLabel() {
     else                                seasonIdx = 0; // Winter
 
     const startYear = 2025;
-    const issueNum = (year - startYear) * 4 + seasonIdx + 1;
+    const num = (year - startYear) * 4 + seasonIdx + 1;
+    return { num, seasonIdx, year };
+}
+
+function issueLabelOf({ num, seasonIdx, year }) {
     const seasons = t('seasons');
-    return t('issueLabel', issueNum, seasons[seasonIdx], year);
+    return t('issueLabel', num, seasons[seasonIdx], year);
+}
+
+function issueInfoOfDate(iso) {
+    const d = new Date(iso + 'T12:00:00');
+    return issueInfo(d.getFullYear(), d.getMonth() + 1);
+}
+
+function getCurrentIssueLabel() {
+    const now = new Date();
+    return issueLabelOf(issueInfo(now.getFullYear(), now.getMonth() + 1));
+}
+
+// Group an (already newest-first) list of articles by issue, newest issue first.
+function groupByIssue(list) {
+    const groups = new Map();
+    list.forEach(a => {
+        const info = issueInfoOfDate(a.date);
+        if (!groups.has(info.num)) {
+            groups.set(info.num, { num: info.num, label: issueLabelOf(info), items: [] });
+        }
+        groups.get(info.num).items.push(a);
+    });
+    return [...groups.values()].sort((g1, g2) => g2.num - g1.num);
 }
 
 /* ── Render featured ── */
@@ -72,7 +96,10 @@ function sidebarLinkHTML(a) {
 }
 
 /* ── Core render (called on init and on every language change) ── */
+const PAGE_SIZE = 9; // cards shown before the "Show all" toggle
 let _featured = null;
+let _activeTopic = 'All';
+let _showAll = false;
 
 function renderAll() {
     // Issue bar
@@ -81,35 +108,41 @@ function renderAll() {
     // Footer year
     document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-    // Featured
+    // Featured (hidden when it doesn't match the active topic)
     renderFeatured(_featured);
+    const featuredVisible = _activeTopic === 'All' || _featured.topic === _activeTopic;
+    document.getElementById('featured-block').style.display = featuredVisible ? 'block' : 'none';
 
-    // Article list (skip featured)
-    const list = articles.filter(a => a.id !== _featured.id);
-    document.getElementById('article-list').innerHTML = list.map(cardHTML).join('');
+    // Feed: everything except the featured article, filtered by topic
+    let list = articles.filter(a => a.id !== _featured.id);
+    if (_activeTopic !== 'All') list = list.filter(a => a.topic === _activeTopic);
+
+    // Pagination: cap to PAGE_SIZE unless "show all" is active
+    const shown = _showAll ? list : list.slice(0, PAGE_SIZE);
+
+    // Group the shown cards by issue
+    document.getElementById('article-list').innerHTML = groupByIssue(shown).map(g => `
+    <section class="issue-group">
+        <h3 class="issue-group-label">${g.label}</h3>
+        ${g.items.map(cardHTML).join('')}
+    </section>`).join('');
+
+    // Empty state (only when nothing at all is visible)
+    document.getElementById('no-results').style.display =
+        (shown.length === 0 && !featuredVisible) ? 'block' : 'none';
+
+    // "Show all / show fewer" toggle
+    const moreWrap = document.getElementById('show-more-wrap');
+    if (list.length > PAGE_SIZE) {
+        moreWrap.style.display = 'block';
+        document.getElementById('show-more-btn').textContent =
+            _showAll ? t('showLess') : t('showAll', list.length);
+    } else {
+        moreWrap.style.display = 'none';
+    }
 
     // Sidebar (3 most recent)
     document.getElementById('sidebar-list').innerHTML = articles.slice(0, 3).map(sidebarLinkHTML).join('');
-
-    // Re-apply active filter
-    const activeBtn = document.querySelector('.topic-pill.active');
-    if (activeBtn && activeBtn.dataset.topic !== 'All') {
-        applyFilter(activeBtn.dataset.topic);
-    }
-}
-
-/* ── Filter logic ── */
-function applyFilter(topic) {
-    const cards = document.querySelectorAll('.article-card');
-    let visible = 0;
-    cards.forEach(card => {
-        const match = topic === 'All' || card.dataset.topic === topic;
-        card.style.display = match ? 'grid' : 'none';
-        if (match) visible++;
-    });
-    document.getElementById('featured-block').style.display =
-        (topic === 'All' || _featured.topic === topic) ? 'block' : 'none';
-    document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
 }
 
 /* ── Init ── */
@@ -128,8 +161,16 @@ function init() {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.topic-pill').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            applyFilter(btn.dataset.topic);
+            _activeTopic = btn.dataset.topic;
+            _showAll = false; // collapse again when switching topics
+            renderAll();
         });
+    });
+
+    // Show-all toggle
+    document.getElementById('show-more-btn').addEventListener('click', () => {
+        _showAll = !_showAll;
+        renderAll();
     });
 }
 

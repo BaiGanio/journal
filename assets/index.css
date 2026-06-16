@@ -204,6 +204,43 @@ footer p {
     font-size: 1.05rem;
 }
 
+/* ── Issue group ── */
+.issue-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 2.25rem 0 0;
+    padding-bottom: 0.4rem;
+}
+.issue-group:first-of-type .issue-group-label {
+    margin-top: 1.5rem;
+}
+
+/* ── Show all / archive toggle ── */
+.show-more-wrap {
+    text-align: center;
+    padding: 2rem 0 0.5rem;
+}
+.show-more-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    padding: 0.55rem 1.4rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.show-more-btn:hover {
+    color: var(--paper);
+    background: var(--ink);
+}
+
 /* ── Article card ── */
 .article-card {
     border-top: 1px solid var(--rule);

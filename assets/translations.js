@@ -45,6 +45,8 @@ const translations = {
     sidebarRecentHeading: "Recent essays",
     sidebarAboutHeading: "About this journal",
     readMore: "Read essay",
+    showAll: (n) => `Show all ${n} essays`,
+    showLess: "Show fewer",
     footerText: "Shadows within the Cave",
     issueLabel: (n, season, year) => `Issue ${n} · ${season} ${year}`,
     about: `<strong>Shadows within the Cave</strong> is a shared essay journal, published four times a year.<br><br>
@@ -87,6 +89,8 @@ We believe that <strong>truth is free</strong>. And as such — should be search
     sidebarRecentHeading: "Последни есета",
     sidebarAboutHeading: "За това списание",
     readMore: "Прочети есето",
+    showAll: (n) => `Покажи всички ${n} есета`,
+    showLess: "Покажи по-малко",
     footerText: "Сенки в пещерата",
     issueLabel: (n, season, year) => `Брой ${n} · ${season} ${year}`,
     about: `<strong>Сенки в пещерата</strong> е споделено списание с есета, публикувано четири пъти в годината.<br><br>
