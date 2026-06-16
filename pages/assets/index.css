@@ -11,17 +11,18 @@ body {
 }
 
 /* ── Top nav ── */
-.top-nav { border-bottom: 1px solid var(--rule); padding: 1rem 0; }
-.site-wordmark { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; font-weight: 900; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+.top-nav { border-bottom: 1px solid var(--rule); }
+.site-wordmark { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 900; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
 .site-wordmark em { font-style: italic; color: var(--rust); }
 .nav-back { font-family: 'DM Mono', monospace; font-size: 1rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
 .nav-back:hover { color: var(--ink); }
 
 /* ── Article header ── */
-.article-header { padding: 3.5rem 0 2rem; border-bottom: 1px solid var(--rule); }
-.article-topic { font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--slate); margin-bottom: 1rem; }
-.article-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
-.article-subtitle { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(1.1rem, 2.5vw, 1.45rem); color: var(--muted); font-weight: 400; margin-bottom: 1.5rem; line-height: 1.4; }
+.article-header { padding: 1.5rem 0 1.25rem; border-bottom: 1px solid var(--rule); text-align: center; }
+.article-header .row { justify-content: center; }
+.article-topic { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); max-width: 960px; margin: 2.5rem auto 0; padding: 0 1rem; }
+.article-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+.article-subtitle { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--muted); font-weight: 400; margin-bottom: 0; line-height: 1.35; }
 .article-meta { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .article-meta span + span::before { content: ' · '; }
 
