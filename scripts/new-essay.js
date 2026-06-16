@@ -20,14 +20,6 @@ const ROOT = path.resolve(__dirname, '..');
 const TEMPLATE = path.join(ROOT, 'pages', 'TEMPLATE.html');
 const ARTICLES = path.join(ROOT, 'assets', 'articles.js');
 
-// Topic → CSS color class used in articles.js / index.css
-const TOPIC_COLORS = {
-  'Philosophy': 'philosophy',
-  'Science Fiction': 'scifi',
-  'Science': 'science',
-  'History': 'history',
-};
-
 // Buffered line queue: robust for both interactive TTY and piped/redirected input
 // (avoids the readline race where piped lines arrive before the next question() registers).
 const rl = readline.createInterface({ input: process.stdin });
@@ -70,7 +62,6 @@ function renderTemplate(tpl, vals) {
   const map = {
     ARTICLE_TITLE: vals.title,
     ARTICLE_SUBTITLE: vals.subtitle,
-    ARTICLE_TOPIC: vals.topic,
     ARTICLE_DATE: vals.dateHuman,
     ARTICLE_EXCERPT: vals.excerpt,
     ARTICLE_IMAGE_CAPTION: vals.caption,
@@ -99,10 +90,6 @@ function insertArticle(src, entry) {
   }
 
   const subtitle = await ask('Subtitle');
-  let topic = await ask('Topic (Philosophy / Science Fiction / Science / History)', 'Philosophy');
-  if (!TOPIC_COLORS[topic]) {
-    console.log(`  (unknown topic "${topic}" — color class will default to "default")`);
-  }
   const excerpt = await ask('Excerpt (1–2 sentences for the feed card)');
   const imageName = await ask('Hero image filename (goes in the image folder)', 'hero.jpg');
   const imageAlt = await ask('Hero image alt text', '');
@@ -121,7 +108,7 @@ function insertArticle(src, entry) {
 
   // 2. Page from template
   const html = renderTemplate(fs.readFileSync(TEMPLATE, 'utf8'), {
-    title, subtitle, topic, excerpt, image, imageAlt, caption, dateHuman: humanDate(date),
+    title, subtitle, excerpt, image, imageAlt, caption, dateHuman: humanDate(date),
   });
   fs.writeFileSync(pagePath, html);
 
@@ -132,8 +119,6 @@ function insertArticle(src, entry) {
     slug: `pages/${slug}.html`,
     title,
     subtitle,
-    topic,
-    topicColor: TOPIC_COLORS[topic] || 'default',
     date,
     image,
     ...(imageAlt ? { imageAlt } : {}),

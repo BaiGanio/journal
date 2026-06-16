@@ -20,36 +20,30 @@
   }
   function applyLang(code) {
     window.__activeLang = code;
+    const langObj = EU_LANGUAGES.find(l => l.code === code);
     document.documentElement.lang = code;
+    document.documentElement.dir = langObj && langObj.rtl ? "rtl" : "ltr";
     storeLang(code);
-    // Update label
-    const langObj = EU_LANGUAGES.find(l => l.code === code) || { name: "English" };
-    document.getElementById("lang-label").textContent = langObj.name;
-    // Mark active option
-    document.querySelectorAll(".lang-option").forEach(btn => {
-      btn.classList.toggle("active", btn.dataset.code === code);
+    // Mark active chip
+    document.querySelectorAll(".lang-chip").forEach(btn => {
+      const active = btn.dataset.code === code;
+      btn.classList.toggle("active", active);
+      btn.setAttribute("aria-selected", active ? "true" : "false");
     });
+    // Update the collapsed toggle to show the active language
+    if (langObj) {
+      const flag = document.getElementById("lang-current-flag");
+      if (flag) flag.src = `https://flagcdn.com/w40/${langObj.cc}.png`;
+      const name = document.getElementById("lang-current-name");
+      if (name) name.textContent = langObj.name;
+    }
     // Update static UI strings
     const tagTitleEl = document.getElementById("masthead-title");
     if (tagTitleEl) tagTitleEl.textContent = t("tagtitle");
     const taglineEl = document.getElementById("masthead-tagline");
     if (taglineEl) {
-      taglineEl.textContent = t("tagline") + " \u2002·\u2002 " + t("issueFrequency");
+      taglineEl.textContent = t("tagline") + "  ·  " + t("issueFrequency");
     }
-    const filterLabel = document.getElementById("filter-label");
-    if (filterLabel) filterLabel.textContent = t("topicsLabel");
-    const pillAll = document.getElementById("pill-all");
-    if (pillAll) pillAll.textContent = t("topicAll");
-    const pillHistory = document.getElementById("pill-history");
-    if (pillHistory) pillHistory.textContent = t("topicHistory");
-    const pillPhilosophy = document.getElementById("pill-philosophy");
-    if (pillPhilosophy) pillPhilosophy.textContent = t("topicPhilosophy");
-    const pillScience = document.getElementById("pill-science");
-    if (pillScience) pillScience.textContent = t("topicScience");
-    const pillScifi = document.getElementById("pill-scifi");
-    if (pillScifi) pillScifi.textContent = t("topicSciFi");
-    const noResults = document.getElementById("no-results");
-    if (noResults) noResults.textContent = t("noResults");
     const sidebarRecent = document.getElementById("sidebar-recent-heading");
     if (sidebarRecent) sidebarRecent.textContent = t("sidebarRecentHeading");
     const sidebarAbout = document.getElementById("sidebar-about-heading");
@@ -63,48 +57,47 @@
       window.renderArticles();
     }
   }
-  // Build dropdown
-  function buildDropdown() {
-    const dropdown = document.getElementById("lang-dropdown");
+  // Build the always-visible flag bar
+  function buildLangBar() {
+    const grid = document.getElementById("lang-grid");
     EU_LANGUAGES.forEach(lang => {
       const btn = document.createElement("button");
-      btn.className = "lang-option";
+      btn.className = "lang-chip";
       btn.dataset.code = lang.code;
-      btn.textContent = lang.name;
       btn.setAttribute("role", "option");
+      btn.setAttribute("aria-selected", "false");
+      btn.innerHTML =
+        `<img src="https://flagcdn.com/w40/${lang.cc}.png" width="20" height="15" alt="" loading="lazy" />` +
+        `<span>${lang.name}</span>`;
       btn.addEventListener("click", () => {
         applyLang(lang.code);
-        closeDropdown();
+        closeGrid();
       });
-      dropdown.appendChild(btn);
+      grid.appendChild(btn);
     });
   }
-  function openDropdown() {
-    const btn = document.getElementById("lang-switcher-btn");
-    const dd = document.getElementById("lang-dropdown");
-    btn.setAttribute("aria-expanded", "true");
-    dd.classList.add("open");
+  function openGrid() {
+    document.getElementById("lang-grid").classList.add("open");
+    document.getElementById("lang-toggle").setAttribute("aria-expanded", "true");
   }
-  function closeDropdown() {
-    const btn = document.getElementById("lang-switcher-btn");
-    const dd = document.getElementById("lang-dropdown");
-    btn.setAttribute("aria-expanded", "false");
-    dd.classList.remove("open");
+  function closeGrid() {
+    document.getElementById("lang-grid").classList.remove("open");
+    document.getElementById("lang-toggle").setAttribute("aria-expanded", "false");
   }
   document.addEventListener("DOMContentLoaded", function () {
-    buildDropdown();
-    // Toggle
-    document.getElementById("lang-switcher-btn").addEventListener("click", function (e) {
+    buildLangBar();
+    // Toggle open/close
+    const toggle = document.getElementById("lang-toggle");
+    toggle.addEventListener("click", function (e) {
       e.stopPropagation();
-      const isOpen = document.getElementById("lang-dropdown").classList.contains("open");
-      isOpen ? closeDropdown() : openDropdown();
+      const isOpen = document.getElementById("lang-grid").classList.contains("open");
+      isOpen ? closeGrid() : openGrid();
     });
-    // Close on outside click
-    document.addEventListener("click", function () { closeDropdown(); });
-    document.getElementById("lang-dropdown").addEventListener("click", function (e) { e.stopPropagation(); });
+    // Close on outside click; keep open when clicking inside the grid
+    document.addEventListener("click", closeGrid);
+    document.getElementById("lang-grid").addEventListener("click", function (e) { e.stopPropagation(); });
     // Apply initial language
     const initial = getStoredLang() || detectBrowserLang();
     applyLang(initial);
   });
 })();
-  

@@ -5,11 +5,6 @@ const fmt = iso => {
     return d.toLocaleDateString(lang, { day: 'numeric', month: 'long', year: 'numeric' });
 };
 
-const topicClass = topic => {
-    const map = { 'Philosophy': 'philosophy', 'Science': 'science', 'Science Fiction': 'scifi', 'History': 'history' };
-    return map[topic] || 'default';
-};
-
 const imgOrPlaceholder = (src, alt) => src
     ? `<img src="${src}" alt="${alt || ''}" style="object-fit:contain" loading="lazy" />`
     : `<div class="img-placeholder"><span>Image</span></div>`;
@@ -58,11 +53,9 @@ function groupByIssue(list) {
 
 /* ── Render featured ── */
 function renderFeatured(a) {
-    document.getElementById('featured-block').innerHTML = `
-    <p class="featured-eyebrow">${t('featuredTag')}</p>
+    document.getElementById('featured-block').innerHTML = `   
     <div class="featured-img-wrap">${imgOrPlaceholder(a.image, a.imageAlt)}</div>
     <div class="d-flex align-items-center gap-2 mt-3">
-        <span class="topic-badge ${topicClass(a.topic)}">${a.topic}</span>
         <span class="read-time">${a.readTime}</span>
     </div>
     <h2 class="featured-title"><a href="${a.slug}">${a.title}</a></h2>
@@ -75,9 +68,8 @@ function renderFeatured(a) {
 /* ── Render article card ── */
 function cardHTML(a) {
     return `
-    <a href="${a.slug}" class="article-card" data-topic="${a.topic}">
+    <a href="${a.slug}" class="article-card">
         <div>
-        <p class="card-topic ${topicClass(a.topic)}">${a.topic}</p>
         <p class="card-title">${a.title}</p>
         <p class="card-excerpt">${a.excerpt}</p>
         <p class="card-meta">${fmt(a.date)} &ensp;·&ensp; ${a.readTime}</p>
@@ -91,14 +83,13 @@ function sidebarLinkHTML(a) {
     return `
     <a href="${a.slug}" class="sidebar-link">
         ${a.title}
-        <small>${a.topic} &ensp;·&ensp; ${fmt(a.date)}</small>
+        <small>${fmt(a.date)}</small>
     </a>`;
 }
 
 /* ── Core render (called on init and on every language change) ── */
 const PAGE_SIZE = 9; // cards shown before the "Show all" toggle
 let _featured = null;
-let _activeTopic = 'All';
 let _showAll = false;
 
 function renderAll() {
@@ -108,14 +99,11 @@ function renderAll() {
     // Footer year
     document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-    // Featured (hidden when it doesn't match the active topic)
+    // Featured
     renderFeatured(_featured);
-    const featuredVisible = _activeTopic === 'All' || _featured.topic === _activeTopic;
-    document.getElementById('featured-block').style.display = featuredVisible ? 'block' : 'none';
 
-    // Feed: everything except the featured article, filtered by topic
-    let list = articles.filter(a => a.id !== _featured.id);
-    if (_activeTopic !== 'All') list = list.filter(a => a.topic === _activeTopic);
+    // Feed: everything except the featured article
+    const list = articles.filter(a => a.id !== _featured.id);
 
     // Pagination: cap to PAGE_SIZE unless "show all" is active
     const shown = _showAll ? list : list.slice(0, PAGE_SIZE);
@@ -126,10 +114,6 @@ function renderAll() {
         <h3 class="issue-group-label">${g.label}</h3>
         ${g.items.map(cardHTML).join('')}
     </section>`).join('');
-
-    // Empty state (only when nothing at all is visible)
-    document.getElementById('no-results').style.display =
-        (shown.length === 0 && !featuredVisible) ? 'block' : 'none';
 
     // "Show all / show fewer" toggle
     const moreWrap = document.getElementById('show-more-wrap');
@@ -155,17 +139,6 @@ function init() {
 
     // Initial render
     renderAll();
-
-    // Filter pills
-    document.querySelectorAll('.topic-pill').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.topic-pill').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            _activeTopic = btn.dataset.topic;
-            _showAll = false; // collapse again when switching topics
-            renderAll();
-        });
-    });
 
     // Show-all toggle
     document.getElementById('show-more-btn').addEventListener('click', () => {
